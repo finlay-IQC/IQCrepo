@@ -99,8 +99,13 @@ strong { color: var(--ink); font-weight: 700; }
 .btn--lg { padding: 17px 36px; font-size: 1.08rem; }
 .btn:focus-visible { outline: 3px solid var(--accent-dark); outline-offset: 2px; }
 
+/* ---------- Masthead (logo only, no nav) ---------- */
+.site-masthead { text-align: center; padding: 24px 22px 4px; }
+.site-masthead img { display: inline-block; height: 44px; width: auto; margin: 0 auto; }
+@media (max-width: 560px) { .site-masthead img { height: 38px; } }
+
 /* ---------- Hero ---------- */
-.hero { padding: 74px 0 56px; text-align: center; }
+.hero { padding: 48px 0 56px; text-align: center; }
 .hero .eyebrow { max-width: 760px; margin-left: auto; margin-right: auto; }
 .hero h1 { max-width: 900px; margin-left: auto; margin-right: auto; }
 .hero .sub { max-width: 720px; margin: 18px auto 30px; font-size: 1.15rem; color: var(--ink-soft); }
@@ -116,16 +121,31 @@ strong { color: var(--ink); font-weight: 700; }
 .trust-strip span { display: inline-flex; align-items: center; gap: 8px; }
 .trust-strip span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 
-/* ---------- Logo strip (social proof) ---------- */
-.logos { text-align: center; }
-.logos .kicker { margin-bottom: 20px; }
-.logo-row {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-  gap: 16px 42px;
+/* ---------- Trusted By marquee (rolling logos) ---------- */
+.kicker.center { text-align: center; margin-bottom: 22px; }
+.marquee {
+  overflow: hidden; position: relative; width: 100%;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
-.logo-row .logo {
-  font-family: var(--serif); font-weight: 700; font-size: 1.28rem;
+.marquee-track {
+  display: flex; width: max-content; align-items: center;
+  animation: marquee-scroll 34s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee .logo {
+  flex: 0 0 auto; margin: 0 34px; white-space: nowrap;
+  font-family: var(--serif); font-weight: 700; font-size: 1.3rem;
   color: var(--ink); letter-spacing: .01em; opacity: .82;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; flex-wrap: wrap; justify-content: center; width: 100%; }
+  .marquee .logo { margin: 8px 22px; }
 }
 
 /* ---------- Problem blocks ---------- */

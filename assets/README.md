@@ -1,6 +1,15 @@
 # assets/
 
-Drop the **Buckland testimonial** video here (referenced by `index.html`, Proof section):
+## Logo (recommended: self-host)
+
+`index.html` currently references the header logo from the client CDN
+(`assets.cdn.filesafe.space/...png`) because the build sandbox couldn't download it.
+To self-host it: download that PNG to `assets/logo.png`, then change the masthead
+`<img src>` in `index.html` from the CDN URL to `assets/logo.png`.
+
+## Buckland testimonial video
+
+Drop the **Buckland testimonial** video here (referenced by `index.html`, Client Results section):
 
 - `testimonial-v2.mp4` — the Buckland interview (`Testimonial - v2.mp4`, ~2.9MB) from the
   original Drive folder. Small enough to self-host.

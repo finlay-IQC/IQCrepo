@@ -14,6 +14,14 @@
 <body>
   <!-- TRACKING BODY CODES GO HERE: GTM Body, noscript tags, etc. -->
 
+  <!-- ============================ HEADER (logo only, no nav) ============================ -->
+  <div class="site-masthead">
+    <!-- Logo referenced from the client CDN. To self-host: download this file to
+         /assets/logo.png and change src to "assets/logo.png". -->
+    <img src="https://assets.cdn.filesafe.space/aLrke2WmmUxrUUz00dEo/media/6a451d34f5487c9778fe2980.png"
+         alt="The IQ Collective" width="176" height="44" />
+  </div>
+
   <!-- ============================ HERO ============================ -->
   <header class="hero section" id="hero">
     <div class="wrap">
@@ -22,24 +30,110 @@
       <p class="sub">Built by an 8-year Preconstruction Manager, not an ads agency. We work with you 1-1 to generate exclusive high-value enquiries, consult on your precon process and tendering, then install the AI systems that tie it all together.</p>
       <a class="btn btn--primary btn--lg" href="#apply">See If You Qualify</a>
       <p class="friction">Free to check. Takes less than 60 seconds.</p>
-
-      <div class="trust-strip">
-        <span>£2.5M in qualified tenders for Buckland in 90 days</span>
-        <span>£3.38M for Sintons Projects in 60 days</span>
-        <span>Built by an 8-year preconstruction manager</span>
-      </div>
     </div>
   </header>
 
-  <!-- ===================== SOCIAL PROOF (logo strip) ===================== -->
-  <section class="section--tight logos section--alt">
+  <!-- ===================== TRUSTED BY (rolling marquee) ===================== -->
+  <section class="section--tight section--alt">
     <div class="wrap">
-      <p class="kicker">Trusted by contracting businesses across the UK</p>
-      <div class="logo-row" aria-label="Client names">
+      <p class="kicker center">Trusted by contracting businesses across the UK</p>
+    </div>
+    <div class="marquee" aria-label="Client names">
+      <div class="marquee-track">
+        <!-- Set 1 (visible) -->
         <span class="logo">Buckland</span>
         <span class="logo">Sintons Projects</span>
         <span class="logo">Kovacs Construction</span>
         <span class="logo">Woodmere</span>
+        <span class="logo">Buckland</span>
+        <span class="logo">Sintons Projects</span>
+        <span class="logo">Kovacs Construction</span>
+        <span class="logo">Woodmere</span>
+        <!-- Set 2 (duplicate for seamless loop, hidden from AT) -->
+        <span class="logo" aria-hidden="true">Buckland</span>
+        <span class="logo" aria-hidden="true">Sintons Projects</span>
+        <span class="logo" aria-hidden="true">Kovacs Construction</span>
+        <span class="logo" aria-hidden="true">Woodmere</span>
+        <span class="logo" aria-hidden="true">Buckland</span>
+        <span class="logo" aria-hidden="true">Sintons Projects</span>
+        <span class="logo" aria-hidden="true">Kovacs Construction</span>
+        <span class="logo" aria-hidden="true">Woodmere</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FORM / SURVEY ===================== -->
+  <section class="section" id="apply">
+    <div class="wrap">
+      <div class="narrow center">
+        <p class="eyebrow">See if you qualify</p>
+        <h2>Answer a few quick questions to get started.</h2>
+        <p class="reassure">It takes under 60 seconds. If you qualify, you'll book your Growth &amp; Systems Audit on the next step.</p>
+      </div>
+      <div class="embed-shell narrow">
+        <!-- Set this form/survey redirect to booking.html (qualified) or unqualified.html (not qualified) after submission, based on the revenue question. -->
+        <!-- TYPEFORM LOGIC REQUIRED (do outside this codebase):
+             In the Typeform builder add ONE rule on the revenue question:
+               - "Under £1M/year"  -> redirect to unqualified.html
+               - anything else (£1M–£3M / £3M–£5M / £5M–£10M / £10M+) -> redirect to booking.html
+             Preserve UTM parameters across both redirect paths.
+             Also create hidden fields in the Typeform named: utm_source, utm_medium,
+             utm_campaign, utm_content, utm_term. script.js passes live values into them
+             via data-tf-hidden; without the matching hidden fields the values are dropped. -->
+        <div data-tf-live="01KZRKC1QDY6PZTHR7WYP06BSN"></div>
+        <!-- embed.typeform.com/next/embed.js is loaded by script.js AFTER hidden UTM
+             fields are set, so the params are captured on init. -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CLIENT RESULTS ===================== -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="narrow center">
+        <p class="eyebrow">Client results</p>
+        <h2>Real numbers from real contracting businesses.</h2>
+      </div>
+
+      <div class="proof-grid">
+        <div class="stat-card is-featured">
+          <div class="figure">£2.5M</div>
+          <p class="desc">in qualified project tenders</p>
+          <div class="meta"><span class="client">Buckland</span><span class="time">90 days</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="figure">£3.38M</div>
+          <p class="desc">in qualified project tenders</p>
+          <div class="meta"><span class="client">Sintons Projects</span><span class="time">60 days</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="figure">£1.2M</div>
+          <p class="desc">in qualified project tenders</p>
+          <div class="meta"><span class="client">Kovacs Construction</span><span class="time">2 weeks</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="figure">£500K</div>
+          <p class="desc">in qualified projects</p>
+          <div class="meta"><span class="client">Woodmere</span><span class="time">30 days</span></div>
+        </div>
+      </div>
+
+      <div class="proof-video">
+        <div class="video-frame">
+          <!-- Buckland testimonial (Testimonial - v2.mp4, 2.9MB).
+               Drop the compressed file into /assets and set the src below, or replace
+               with a hosted embed (YouTube/Vimeo). Kept lazy + poster to avoid layout shift. -->
+          <video
+            controls
+            preload="none"
+            playsinline
+            poster="assets/buckland-testimonial-poster.jpg"
+            aria-label="Buckland client testimonial video">
+            <source src="assets/testimonial-v2.mp4" type="video/mp4" />
+            Your browser does not support embedded video. The Buckland testimonial is available on request.
+          </video>
+        </div>
+        <p class="video-caption">Buckland — £2.5M in qualified project tenders in 90 days.</p>
       </div>
     </div>
   </section>
@@ -53,6 +147,10 @@
         <p class="lead">We look at what's actually happening in your business, then build around it.</p>
       </div>
       <dl class="install-list">
+        <div class="install-item">
+          <dt>Business &amp; Systems Review</dt>
+          <dd>A full analysis of your business before anything else starts, so every system we build actually fits how you operate.</dd>
+        </div>
         <div class="install-item">
           <dt>Paid Ads</dt>
           <dd>Qualified enquiries running consistently, under your brand.</dd>
@@ -167,59 +265,8 @@
     </div>
   </section>
 
-  <!-- ===================== PROOF ===================== -->
-  <section class="section section--alt">
-    <div class="wrap">
-      <div class="narrow center">
-        <p class="eyebrow">Proof</p>
-        <h2>Real numbers from real contracting businesses.</h2>
-      </div>
-
-      <div class="proof-grid">
-        <div class="stat-card is-featured">
-          <div class="figure">£2.5M</div>
-          <p class="desc">in qualified project tenders</p>
-          <div class="meta"><span class="client">Buckland</span><span class="time">90 days</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="figure">£3.38M</div>
-          <p class="desc">in qualified project tenders</p>
-          <div class="meta"><span class="client">Sintons Projects</span><span class="time">60 days</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="figure">£1.2M</div>
-          <p class="desc">in qualified project tenders</p>
-          <div class="meta"><span class="client">Kovacs Construction</span><span class="time">2 weeks</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="figure">£500K</div>
-          <p class="desc">in qualified projects</p>
-          <div class="meta"><span class="client">Woodmere</span><span class="time">30 days</span></div>
-        </div>
-      </div>
-
-      <div class="proof-video">
-        <div class="video-frame">
-          <!-- Buckland testimonial (Testimonial - v2.mp4, 2.9MB).
-               Drop the compressed file into /assets and set the src below, or replace
-               with a hosted embed (YouTube/Vimeo). Kept lazy + poster to avoid layout shift. -->
-          <video
-            controls
-            preload="none"
-            playsinline
-            poster="assets/buckland-testimonial-poster.jpg"
-            aria-label="Buckland client testimonial video">
-            <source src="assets/testimonial-v2.mp4" type="video/mp4" />
-            Your browser does not support embedded video. The Buckland testimonial is available on request.
-          </video>
-        </div>
-        <p class="video-caption">Buckland — £2.5M in qualified project tenders in 90 days.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== WHO THIS IS FOR / NOT FOR ===================== -->
-  <section class="section">
+  <section class="section section--alt">
     <div class="wrap">
       <div class="narrow center">
         <p class="eyebrow">Fit</p>
@@ -249,7 +296,7 @@
   </section>
 
   <!-- ===================== FAQ ===================== -->
-  <section class="section section--alt">
+  <section class="section">
     <div class="wrap">
       <div class="narrow center">
         <p class="eyebrow">Questions</p>
@@ -292,31 +339,6 @@
             It's built and led by an 8-year preconstruction manager who has run tenders, estimating and precon at this level, not a general marketing agency. You're working with someone who understands your side of the business.
           </div></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FORM / SURVEY ===================== -->
-  <section class="section" id="apply">
-    <div class="wrap">
-      <div class="narrow center">
-        <p class="eyebrow">See if you qualify</p>
-        <h2>Answer a few quick questions to get started.</h2>
-        <p class="reassure">It takes under 60 seconds. If you qualify, you'll book your Growth &amp; Systems Audit on the next step.</p>
-      </div>
-      <div class="embed-shell narrow">
-        <!-- Set this form/survey redirect to booking.html (qualified) or unqualified.html (not qualified) after submission, based on the revenue question. -->
-        <!-- TYPEFORM LOGIC REQUIRED (do outside this codebase):
-             In the Typeform builder add ONE rule on the revenue question:
-               - "Under £1M/year"  -> redirect to booking? NO -> redirect to unqualified.html
-               - anything else (£1M–£3M / £3M–£5M / £5M–£10M / £10M+) -> redirect to booking.html
-             Preserve UTM parameters across both redirect paths.
-             Also create hidden fields in the Typeform named: utm_source, utm_medium,
-             utm_campaign, utm_content, utm_term. script.js passes live values into them
-             via data-tf-hidden; without the matching hidden fields the values are dropped. -->
-        <div data-tf-live="01KZRKC1QDY6PZTHR7WYP06BSN"></div>
-        <!-- embed.typeform.com/next/embed.js is loaded by script.js AFTER hidden UTM
-             fields are set, so the params are captured on init. -->
       </div>
     </div>
   </section>

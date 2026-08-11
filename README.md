@@ -19,6 +19,12 @@ Netlify, Vercel, Cloudflare Pages, etc.).
   assets/             Testimonial video + poster live here (see assets/README.md)
 ```
 
+## Landing page section order
+
+Header (centered logo) → Hero → Trusted By (rolling logo marquee) → Form (Typeform) →
+Client Results (stat grid + Buckland video) → What We Install → Problem → Mechanism →
+How it works → What you get → Who this is for / not for → FAQ → Final CTA → Footer.
+
 ## Funnel flow
 
 `index.html` (form) → **Typeform routes** → `booking.html` (qualified) *or*
@@ -42,6 +48,8 @@ These cannot be done from the code alone:
 4. **Thank-you video** — compress `Video 1 C.mp4` (573MB) + self-host, or upload to
    YouTube/Vimeo/Cloudflare Stream, then replace the placeholder in `thank-you.html`.
 5. **Proof video** — drop the 2.9MB Buckland `testimonial-v2.mp4` (+ poster) into `assets/`.
+5b. **Logo (optional but recommended)** — the header logo loads from the client CDN. To
+    self-host, download it to `assets/logo.png` and point the masthead `<img src>` at it.
 6. **Tracking** — paste pixels/tags into the clearly-marked `<!-- TRACKING ... -->` slots
    on every page. Fire the booked-call conversion **only** on `thank-you.html`.
 7. **Attribution** — confirm the Meta ad URLs pass an ad-specific value
