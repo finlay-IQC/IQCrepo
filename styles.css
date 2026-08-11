@@ -251,7 +251,9 @@ strong { color: var(--ink); font-weight: 700; }
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 18px; box-shadow: var(--shadow);
 }
-[data-tf-live] { width: 100%; height: 600px; }  /* explicit height: the injected iframe fills its container */
+/* Typeform fills the full width of its container — no surrounding card, no dead space. */
+.form-embed { width: 100%; }
+[data-tf-live] { width: 100%; min-height: 500px; height: 600px; }  /* explicit height so the injected iframe fills; min-height guards against collapse before init */
 [data-tf-live] iframe { width: 100% !important; height: 100% !important; border: 0; }
 @media (max-width: 560px) { [data-tf-live] { height: 640px; } }
 .calendar-shell { min-height: 700px; }
