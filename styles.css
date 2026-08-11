@@ -100,12 +100,12 @@ strong { color: var(--ink); font-weight: 700; }
 .btn:focus-visible { outline: 3px solid var(--accent-dark); outline-offset: 2px; }
 
 /* ---------- Masthead (logo only, no nav) ---------- */
-.site-masthead { text-align: center; padding: 24px 22px 4px; }
-.site-masthead img { display: inline-block; height: 44px; width: auto; margin: 0 auto; }
-@media (max-width: 560px) { .site-masthead img { height: 38px; } }
+.site-masthead { text-align: center; padding: 26px 22px 0; }
+.site-masthead img { display: inline-block; height: 72px; width: auto; margin: 0 auto; }
+@media (max-width: 560px) { .site-masthead img { height: 56px; } }
 
 /* ---------- Hero ---------- */
-.hero { padding: 48px 0 56px; text-align: center; }
+.hero { padding: 20px 0 56px; text-align: center; }
 .hero .eyebrow { max-width: 760px; margin-left: auto; margin-right: auto; }
 .hero h1 { max-width: 900px; margin-left: auto; margin-right: auto; }
 .hero .sub { max-width: 720px; margin: 18px auto 30px; font-size: 1.15rem; color: var(--ink-soft); }
@@ -252,7 +252,9 @@ strong { color: var(--ink); font-weight: 700; }
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 18px; box-shadow: var(--shadow);
 }
-[data-tf-live] { min-height: 520px; }           /* reserve space, avoid layout shift */
+[data-tf-live] { width: 100%; height: 600px; }  /* explicit height: the injected iframe fills its container */
+[data-tf-live] iframe { width: 100% !important; height: 100% !important; border: 0; }
+@media (max-width: 560px) { [data-tf-live] { height: 640px; } }
 .calendar-shell { min-height: 700px; }
 .calendar-shell iframe { width: 100%; min-height: 700px; border: 0; display: block; }
 
