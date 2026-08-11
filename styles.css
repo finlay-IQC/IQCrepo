@@ -251,11 +251,14 @@ strong { color: var(--ink); font-weight: 700; }
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 18px; box-shadow: var(--shadow);
 }
-/* Typeform: no surrounding card, centered, and sized so the form fills its own
-   container (a very wide container makes the form content hug the left edge). */
-.form-embed { width: 100%; max-width: 720px; margin-left: auto; margin-right: auto; }
-[data-tf-live] { width: 100%; min-height: 500px; height: 600px; }  /* explicit height so the injected iframe fills; min-height guards against collapse before init */
-[data-tf-live] iframe { width: 100% !important; height: 100% !important; border: 0; }
+/* Typeform: no surrounding card. Flex-center the embed so the box is
+   unambiguously centered on the page. */
+.form-embed { width: 100%; display: flex; justify-content: center; }
+[data-tf-live] {
+  width: 100%; max-width: 720px; margin: 0 auto;
+  min-height: 500px; height: 600px;   /* explicit height so the injected iframe fills; min-height guards against collapse before init */
+}
+[data-tf-live] iframe { width: 100% !important; height: 100% !important; border: 0; display: block; margin: 0 auto; }
 @media (max-width: 560px) { [data-tf-live] { height: 640px; } }
 .calendar-shell { min-height: 700px; }
 .calendar-shell iframe { width: 100%; min-height: 700px; border: 0; display: block; }
