@@ -22,14 +22,34 @@
          alt="The IQ Collective" />
   </div>
 
-  <!-- ============================ HERO ============================ -->
+  <!-- ============================ HERO (copy + form, above the fold) ============================ -->
   <header class="hero section" id="hero">
-    <div class="wrap">
-      <p class="eyebrow">For Design &amp; Build, Commercial Fit-Out, Large-Scale Renovation &amp; Construction Firms — £1M–£10M a Year.</p>
-      <h1>We Install the Systems That Scale Contracting Businesses Doing Between £1M–£10M a Year.</h1>
-      <p class="sub">Built by an 8-year Preconstruction Manager, not an ads agency. We work with you 1-1 to generate exclusive high-value enquiries, consult on your precon process and tendering, then install the AI systems that tie it all together.</p>
-      <a class="btn btn--primary btn--lg" href="#apply">See If You Qualify</a>
-      <p class="friction">Free to check. Takes less than 60 seconds.</p>
+    <div class="wrap hero-split">
+      <div class="hero-copy">
+        <p class="eyebrow">For Design &amp; Build, Commercial Fit-Out, Large-Scale Renovation &amp; Construction Firms — £1M–£10M a Year.</p>
+        <h1>We Install the Systems That Scale Contracting Businesses Doing Between £1M–£10M a Year.</h1>
+        <p class="sub">Built by an 8-year Preconstruction Manager, not an ads agency. We work with you 1-1 to generate exclusive high-value enquiries, consult on your precon process and tendering, then install the AI systems that tie it all together.</p>
+        <a class="btn btn--primary btn--lg hero-cta" href="#apply">See If You Qualify</a>
+        <p class="friction">Free to check. Takes less than 60 seconds.</p>
+      </div>
+
+      <div class="hero-form" id="apply">
+        <p class="form-kicker">See if you qualify — under 60 seconds</p>
+        <div class="form-embed">
+          <!-- Set this form/survey redirect to booking.html (qualified) or unqualified.html (not qualified) after submission, based on the revenue question. -->
+          <!-- TYPEFORM LOGIC REQUIRED (do outside this codebase):
+               In the Typeform builder add ONE rule on the revenue question:
+                 - "Under £1M/year"  -> redirect to unqualified.html
+                 - anything else (£1M–£3M / £3M–£5M / £5M–£10M / £10M+) -> redirect to booking.html
+               Preserve UTM parameters across both redirect paths.
+               Also create hidden fields in the Typeform named: utm_source, utm_medium,
+               utm_campaign, utm_content, utm_term. script.js passes live values into them
+               via data-tf-hidden; without the matching hidden fields the values are dropped. -->
+          <div data-tf-live="01KZTSG2PFVDXAQ9ZE1WGXRVKA" data-tf-inline-on-mobile style="width:100%;min-height:500px;height:600px;"></div>
+          <!-- embed.typeform.com/next/embed.js is loaded by script.js AFTER hidden UTM
+               fields are set, so the params are captured on init. -->
+        </div>
+      </div>
     </div>
   </header>
 
@@ -44,48 +64,23 @@
            so the strip never looks broken. -->
       <div class="marquee-track">
         <!-- Set 1 (visible) -->
-        <span class="logo"><img src="assets/logos/buckland.png" alt="Buckland" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Buckland</span></span>
-        <span class="logo"><img src="assets/logos/sintons.png" alt="Sintons Projects" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Sintons Projects</span></span>
-        <span class="logo"><img src="assets/logos/kovacs.png" alt="Kovacs Construction" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Kovacs Construction</span></span>
-        <span class="logo"><img src="assets/logos/woodmere.png" alt="Woodmere" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Woodmere</span></span>
-        <span class="logo"><img src="assets/logos/manor-homes.png" alt="Manor Homes London Limited" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Manor Homes</span></span>
-        <span class="logo"><img src="assets/logos/lvx.png" alt="LVX" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">LVX</span></span>
-        <span class="logo"><img src="assets/logos/polarbuild.png" alt="Polarbuild" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Polarbuild</span></span>
-        <span class="logo"><img src="assets/logos/7-star.png" alt="7 Star Construction" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">7 Star Construction</span></span>
+        <span class="logo"><img src="assets/logos/buckland.png" alt="Buckland" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Buckland</span></span>
+        <span class="logo"><img src="assets/logos/sintons.png" alt="Sintons Projects" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Sintons Projects</span></span>
+        <span class="logo"><img src="assets/logos/kovacs.png" alt="Kovacs Construction" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Kovacs Construction</span></span>
+        <span class="logo"><img src="assets/logos/woodmere.png" alt="Woodmere" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Woodmere</span></span>
+        <span class="logo"><img src="assets/logos/manor-homes.png" alt="Manor Homes London Limited" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Manor Homes</span></span>
+        <span class="logo"><img src="assets/logos/lvx.png" alt="LVX" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">LVX</span></span>
+        <span class="logo"><img src="assets/logos/polarbuild.png" alt="Polarbuild" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Polarbuild</span></span>
+        <span class="logo"><img src="assets/logos/7-star.png" alt="7 Star Construction" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">7 Star Construction</span></span>
         <!-- Set 2 (duplicate for seamless loop, hidden from AT) -->
-        <span class="logo" aria-hidden="true"><img src="assets/logos/buckland.png" alt="" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Buckland</span></span>
-        <span class="logo" aria-hidden="true"><img src="assets/logos/sintons.png" alt="" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Sintons Projects</span></span>
-        <span class="logo" aria-hidden="true"><img src="assets/logos/kovacs.png" alt="" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Kovacs Construction</span></span>
-        <span class="logo" aria-hidden="true"><img src="assets/logos/woodmere.png" alt="" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Woodmere</span></span>
-        <span class="logo" aria-hidden="true"><img src="assets/logos/manor-homes.png" alt="" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Manor Homes</span></span>
-        <span class="logo" aria-hidden="true"><img src="assets/logos/lvx.png" alt="" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">LVX</span></span>
-        <span class="logo" aria-hidden="true"><img src="assets/logos/polarbuild.png" alt="" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Polarbuild</span></span>
-        <span class="logo" aria-hidden="true"><img src="assets/logos/7-star.png" alt="" loading="lazy" onerror="this.classList.add('is-missing')"><span class="logo-fallback">7 Star Construction</span></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FORM / SURVEY ===================== -->
-  <section class="section" id="apply">
-    <div class="wrap">
-      <div class="narrow center">
-        <p class="eyebrow">See if you qualify</p>
-        <h2>Answer a few quick questions to get started.</h2>
-        <p class="reassure">It takes under 60 seconds. If you qualify, you'll book your Growth &amp; Systems Audit on the next step.</p>
-      </div>
-      <div class="form-embed">
-        <!-- Set this form/survey redirect to booking.html (qualified) or unqualified.html (not qualified) after submission, based on the revenue question. -->
-        <!-- TYPEFORM LOGIC REQUIRED (do outside this codebase):
-             In the Typeform builder add ONE rule on the revenue question:
-               - "Under £1M/year"  -> redirect to unqualified.html
-               - anything else (£1M–£3M / £3M–£5M / £5M–£10M / £10M+) -> redirect to booking.html
-             Preserve UTM parameters across both redirect paths.
-             Also create hidden fields in the Typeform named: utm_source, utm_medium,
-             utm_campaign, utm_content, utm_term. script.js passes live values into them
-             via data-tf-hidden; without the matching hidden fields the values are dropped. -->
-        <div data-tf-live="01KZTSG2PFVDXAQ9ZE1WGXRVKA" data-tf-inline-on-mobile style="width:100%;min-height:500px;height:600px;"></div>
-        <!-- embed.typeform.com/next/embed.js is loaded by script.js AFTER hidden UTM
-             fields are set, so the params are captured on init. -->
+        <span class="logo" aria-hidden="true"><img src="assets/logos/buckland.png" alt="" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Buckland</span></span>
+        <span class="logo" aria-hidden="true"><img src="assets/logos/sintons.png" alt="" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Sintons Projects</span></span>
+        <span class="logo" aria-hidden="true"><img src="assets/logos/kovacs.png" alt="" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Kovacs Construction</span></span>
+        <span class="logo" aria-hidden="true"><img src="assets/logos/woodmere.png" alt="" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Woodmere</span></span>
+        <span class="logo" aria-hidden="true"><img src="assets/logos/manor-homes.png" alt="" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Manor Homes</span></span>
+        <span class="logo" aria-hidden="true"><img src="assets/logos/lvx.png" alt="" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">LVX</span></span>
+        <span class="logo" aria-hidden="true"><img src="assets/logos/polarbuild.png" alt="" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">Polarbuild</span></span>
+        <span class="logo" aria-hidden="true"><img src="assets/logos/7-star.png" alt="" loading="eager" onerror="this.classList.add('is-missing')"><span class="logo-fallback">7 Star Construction</span></span>
       </div>
     </div>
   </section>
