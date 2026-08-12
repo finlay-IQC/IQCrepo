@@ -14,7 +14,6 @@ shows the company name as text instead (so the strip never looks broken).
 | `woodmere.png`       | Woodmere                  |
 | `manor-homes.png`    | Manor Homes London Ltd    |
 | `lvx.png`            | LVX                       |
-| `milford.png`        | Milford & Sons            |
 | `polarbuild.png`     | Polarbuild                |
 | `7-star.png`         | 7 Star Construction       |
 
