@@ -25,17 +25,17 @@
         <p class="reassure">Follow the 2 steps below to lock in your spot.</p>
       </div>
 
-      <!-- Centered video — main focus of the page (self-hosted, ~7MB, 16:9). -->
+      <!-- Centered video — main focus of the page (Cloudflare Stream). -->
       <div class="ty-video">
-        <video
-          controls
-          preload="metadata"
-          playsinline
-          poster="assets/thank-you-poster.jpg"
-          aria-label="Welcome video — what happens next">
-          <source src="assets/thank-you-video.mp4" type="video/mp4" />
-          Your browser does not support embedded video.
-        </video>
+        <div class="cf-stream">
+          <iframe
+            src="https://customer-37f46l7urxduuew8.cloudflarestream.com/a61a5bc297245f86db26d0726d69ceb8/iframe?poster=https%3A%2F%2Fcustomer-37f46l7urxduuew8.cloudflarestream.com%2Fa61a5bc297245f86db26d0726d69ceb8%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+            allowfullscreen="true"
+            title="Thank you video">
+          </iframe>
+        </div>
       </div>
 
       <div class="ty-steps">

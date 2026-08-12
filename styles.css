@@ -353,12 +353,14 @@ strong { color: var(--ink); font-weight: 700; }
 .mini-head .brand-tag { font-family: var(--serif); font-weight: 700; color: var(--ink); font-size: 1.15rem; margin-bottom: 22px; }
 .reassure { color: var(--muted); max-width: 560px; margin: 0 auto 30px; text-align: center; }
 
-/* thank-you video */
+/* thank-you video (Cloudflare Stream, responsive 16:9) */
 .ty-video { max-width: 640px; margin: 0 auto 34px; }
-.ty-video video {
-  width: 100%; aspect-ratio: 16 / 9; display: block; background: #000;
-  border-radius: 12px; border: 1px solid var(--line-strong);
+.cf-stream {
+  position: relative; padding-top: 56.25%;
+  background: #000; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--line-strong);
 }
+.cf-stream iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* thank-you steps */
 .ty-steps { max-width: 620px; margin: 0 auto 26px; display: grid; gap: 16px; }
