@@ -208,18 +208,35 @@ strong { color: var(--ink); font-weight: 700; }
 }
 
 /* ---------- Proof section ---------- */
-.proof-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 30px;
+/* Client-results cards: dark-green card, gold accents, circular client badge */
+.results-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-bottom: 34px;
 }
-.stat-card {
-  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 26px 22px; text-align: left;
+.result-card {
+  background: #0a493a;                         /* deep green */
+  border: 1px solid rgba(201, 168, 106, .28);  /* subtle gold hairline */
+  border-radius: 16px;
+  padding: 34px 34px 30px;
+  color: #fff;
+  display: flex; flex-direction: column; align-items: flex-start;
 }
-.stat-card .figure { font-family: var(--serif); font-weight: 700; font-size: 2.1rem; color: var(--ink); line-height: 1; }
-.stat-card .desc { margin: 10px 0 14px; color: var(--ink-soft); font-size: .98rem; }
-.stat-card .meta { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 12px; }
-.stat-card .client { font-weight: 700; color: var(--ink); }
-.stat-card .time { font-size: .82rem; color: var(--muted); }
+.result-badge {
+  width: 78px; height: 78px; border-radius: 50%;
+  object-fit: cover; background: #fff;
+  border: 2px solid #c9a86a;                    /* gold ring */
+  margin-bottom: 22px;
+}
+.result-figure {
+  font-family: var(--serif); font-weight: 700; line-height: 1;
+  font-size: clamp(2.4rem, 5vw, 3.1rem); color: #fff;
+}
+.result-desc { margin: 12px 0 0; color: #e0d6bd; font-size: 1.05rem; }  /* warm cream */
+.result-time {
+  margin: 18px 0 0; padding-top: 16px; width: 100%;
+  border-top: 1px solid rgba(201, 168, 106, .3);
+  color: #c9a86a; font-size: .78rem; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase;
+}
 
 .proof-video { max-width: 760px; margin: 0 auto; }
 .video-frame {
@@ -336,7 +353,6 @@ strong { color: var(--ink); font-weight: 700; }
 @media (max-width: 860px) {
   .blocks { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
-  .proof-grid { grid-template-columns: repeat(2, 1fr); }
   .fit { grid-template-columns: 1fr; }
   .install-item { grid-template-columns: 1fr; gap: 4px; }
 }
@@ -344,7 +360,7 @@ strong { color: var(--ink); font-weight: 700; }
   body { font-size: 16px; }
   .section { padding: 48px 0; }
   .hero { padding: 52px 0 40px; }
-  .proof-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
   .hero .btn, .final-cta .btn { width: 100%; min-width: 0; }
   .wrap { padding: 0 18px; }
 }
