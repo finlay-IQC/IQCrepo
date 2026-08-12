@@ -349,9 +349,33 @@ strong { color: var(--ink); font-weight: 700; }
 /* ---------- Minimal page (booking / thank-you / legal) ---------- */
 .minimal { min-height: 100vh; display: flex; flex-direction: column; }
 .minimal main { flex: 1; padding: 56px 0; }
-.mini-head { text-align: center; margin-bottom: 30px; }
+.mini-head { text-align: center; margin-bottom: 34px; }
 .mini-head .brand-tag { font-family: var(--serif); font-weight: 700; color: var(--ink); font-size: 1.15rem; margin-bottom: 22px; }
 .reassure { color: var(--muted); max-width: 560px; margin: 0 auto 30px; text-align: center; }
+
+/* centered logo on minimal (booking / thank-you / legal) pages */
+.mini-logo { height: 56px; width: auto; display: block; margin: 8px auto 26px; }
+@media (max-width: 560px) { .mini-logo { height: 46px; } }
+
+/* pill eyebrow */
+.pill-eyebrow {
+  display: inline-block; margin: 0 0 22px;
+  border: 1px solid var(--accent); color: var(--accent-dark);
+  border-radius: 999px; padding: 9px 22px;
+  font-family: var(--sans); font-size: .8rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+
+/* minimal-page subheadline */
+.mini-sub { max-width: 620px; margin: 16px auto 0; font-size: 1.12rem; color: var(--ink-soft); }
+.mini-sub .hl { color: var(--accent-dark); font-weight: 700; }
+.mini-sub--accent { color: var(--accent-dark); font-weight: 600; }
+
+/* confirm-on-calendar button + helper (thank-you page) */
+.confirm-wrap { text-align: center; margin-top: 6px; }
+.confirm-btn { min-width: 320px; max-width: 100%; }
+.ty-help { max-width: 560px; margin: 16px auto 0; text-align: center; color: var(--muted); font-size: .92rem; }
+@media (max-width: 560px) { .confirm-btn { min-width: 0; width: 100%; } }
 
 /* thank-you video (Cloudflare Stream, responsive 16:9) */
 .ty-video { max-width: 640px; margin: 0 auto 34px; }
