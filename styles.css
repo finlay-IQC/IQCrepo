@@ -135,10 +135,21 @@ strong { color: var(--ink); font-weight: 700; }
 }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee .logo {
-  flex: 0 0 auto; margin: 0 34px; white-space: nowrap;
+  flex: 0 0 auto; margin: 0 40px; white-space: nowrap;
+  display: inline-flex; align-items: center;
   font-family: var(--serif); font-weight: 700; font-size: 1.3rem;
   color: var(--ink); letter-spacing: .01em; opacity: .82;
 }
+/* real logo images */
+.marquee .logo img {
+  height: 52px; width: auto; max-width: 190px;
+  object-fit: contain; display: block; vertical-align: middle;
+}
+.marquee .logo img.is-missing { display: none; }
+/* text fallback shown only when the image fails to load / is missing */
+.logo-fallback { display: none; }
+.marquee .logo img.is-missing + .logo-fallback { display: inline; }
+@media (max-width: 560px) { .marquee .logo img { height: 42px; max-width: 150px; } }
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
