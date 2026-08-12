@@ -9,15 +9,14 @@ shows the company name as text instead (so the strip never looks broken).
 | File                 | Brand                     |
 |----------------------|---------------------------|
 | `buckland.png`       | Buckland                  |
+| `sintons.png`        | Sintons Projects          |
+| `kovacs.png`         | Kovacs Construction       |
 | `woodmere.png`       | Woodmere                  |
 | `manor-homes.png`    | Manor Homes London Ltd    |
 | `lvx.png`            | LVX                       |
 | `milford.png`        | Milford & Sons            |
 | `polarbuild.png`     | Polarbuild                |
 | `7-star.png`         | 7 Star Construction       |
-
-(Sintons Projects and Kovacs Construction are not in the logo strip — they
-appear in the Client Results stat cards instead.)
 
 ## Guidelines
 
