@@ -84,7 +84,7 @@
   /* ---------- 3. Typeform embed with hidden UTM fields ---------- */
   /* NOTE: For these values to be stored on the submission, the matching
      hidden fields (utm_source, utm_medium, utm_campaign, utm_content,
-     utm_term, fbc, fbp) must ALSO be created inside the Typeform itself.
+     utm_term, fbc, fbp, fbclid) must ALSO be created inside the Typeform.
      fbc/fbp then need mapping into the CAPI payload's user_data, unhashed. */
   function initTypeform(params) {
     var el = document.querySelector("[data-tf-live]");
@@ -97,6 +97,19 @@
     var ids = metaIds(params);
     if (ids.fbc) values.fbc = ids.fbc;
     if (ids.fbp) values.fbp = ids.fbp;
+
+    /* Raw click ID as well as the wrapped fbc. GoHighLevel's Facebook
+       Conversion API action takes the bare fbclid and builds the
+       fb.1.<timestamp>.<fbclid> format itself, so it needs the unwrapped
+       value; senders that build their own payload use fbc instead.
+       sessionStorage only holds fbclid for the current session, so on a
+       later visit fall back to unwrapping it out of the _fbc cookie,
+       which Meta keeps for 90 days. */
+    var fbclid = params.fbclid;
+    if (!fbclid && ids.fbc) {
+      fbclid = ids.fbc.split(".").slice(3).join(".");
+    }
+    if (fbclid) values.fbclid = fbclid;
 
     var pairs = Object.keys(values).map(function (k) {
       return k + "=" + encodeURIComponent(values[k]);
