@@ -3,7 +3,8 @@
    Responsibilities:
      1. Capture UTM / click IDs on landing and persist to sessionStorage.
      2. Append persisted params to internal funnel links.
-     3. Feed UTM values into the Typeform embed via data-tf-hidden (+ init embed).
+     3. Feed UTM + Meta fbc/fbp values into the Typeform embed via
+        data-tf-hidden (+ init embed), so CAPI can use them for matching.
      4. Sticky bottom CTA reveal after hero (index only).
      5. FAQ accordion.
      6. Smooth-scroll helpers to the form section.
@@ -26,6 +27,29 @@
   function writeStore(obj) {
     try { sessionStorage.setItem(STORE_KEY, JSON.stringify(obj)); }
     catch (e) { /* ignore */ }
+  }
+
+  /* ---------- cookie reader (Meta Pixel writes _fbc / _fbp) ---------- */
+  function readCookie(name) {
+    try {
+      var match = document.cookie.match(new RegExp("(^|;\\s*)" + name + "=([^;]*)"));
+      return match ? decodeURIComponent(match[2]) : "";
+    } catch (e) { return ""; }
+  }
+
+  /* ---------- Meta click / browser IDs for CAPI matching ---------- */
+  /* The Pixel sets _fbc (from fbclid) and _fbp on this domain. Both are
+     browser-side only, so the CAPI sender cannot see them unless they ride
+     along on the submission. Passed through as hidden fields, unhashed.
+     If the Pixel is blocked, _fbc is absent but fbclid may still be in the
+     URL, so fall back to building fbc in Meta's documented format:
+     fb.<subdomainIndex>.<creationTimeMs>.<fbclid> */
+  function metaIds(params) {
+    var fbc = readCookie("_fbc");
+    if (!fbc && params.fbclid) {
+      fbc = "fb.1." + Date.now() + "." + params.fbclid;
+    }
+    return { fbc: fbc, fbp: readCookie("_fbp") };
   }
 
   /* ---------- 1. capture from current URL, merge with what we have ---------- */
@@ -60,15 +84,23 @@
   /* ---------- 3. Typeform embed with hidden UTM fields ---------- */
   /* NOTE: For these values to be stored on the submission, the matching
      hidden fields (utm_source, utm_medium, utm_campaign, utm_content,
-     utm_term) must ALSO be created inside the Typeform itself. */
+     utm_term, fbc, fbp) must ALSO be created inside the Typeform itself.
+     fbc/fbp then need mapping into the CAPI payload's user_data, unhashed. */
   function initTypeform(params) {
     var el = document.querySelector("[data-tf-live]");
     if (!el) return;
 
-    var hiddenKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
-    var pairs = hiddenKeys
-      .filter(function (k) { return params[k]; })
-      .map(function (k) { return k + "=" + encodeURIComponent(params[k]); });
+    var values = {};
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]
+      .forEach(function (k) { if (params[k]) values[k] = params[k]; });
+
+    var ids = metaIds(params);
+    if (ids.fbc) values.fbc = ids.fbc;
+    if (ids.fbp) values.fbp = ids.fbp;
+
+    var pairs = Object.keys(values).map(function (k) {
+      return k + "=" + encodeURIComponent(values[k]);
+    });
 
     if (pairs.length) el.setAttribute("data-tf-hidden", pairs.join(","));
 
