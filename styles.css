@@ -132,7 +132,7 @@ strong { color: var(--ink); font-weight: 700; }
 }
 @media (max-width: 900px) {
   /* One column, with the hero's parts re-ordered so the form clears the fold:
-     lead copy -> CTA -> form -> the credential paragraph.
+     lead copy -> form -> CTA -> the credential paragraph.
      .hero-copy becomes display:contents so its children are grid items of
      .hero-split and can be ordered around .hero-form, which is not their
      sibling in the markup. That box no longer generates, so the centring it
@@ -151,9 +151,9 @@ strong { color: var(--ink); font-weight: 700; }
   .hero-copy .eyebrow   { order: 1; }
   .hero-copy h1         { order: 2; }
   .hero-copy .guarantee { order: 3; margin-left: auto; margin-right: auto; }
-  .hero-cta             { order: 4; justify-self: center; min-width: 260px; margin-top: 22px; }
-  .friction             { order: 5; }
-  .hero-form            { order: 6; margin-top: 28px; }
+  .hero-form            { order: 4; margin-top: 28px; }
+  .hero-cta             { order: 5; justify-self: center; min-width: 260px; margin-top: 22px; }
+  .friction             { order: 6; }
   .hero-copy .sub       { order: 7; margin: 28px auto 0; }
 }
 
