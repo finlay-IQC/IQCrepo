@@ -474,9 +474,9 @@ strong { color: var(--ink); font-weight: 700; }
   letter-spacing: .09em; text-transform: uppercase; color: var(--muted);
 }
 
-/* the urgency video - wider than the breakouts, heavier frame */
-.ty-urgency { max-width: 780px; margin: 0 auto; }
-.ty-urgency .narrow.center { margin-bottom: 28px; }
+/* the urgency video - first on the page, above the confirm-call video, and
+   given a heavier frame so it reads as the priority watch */
+.ty-urgency-lead { max-width: var(--maxw-narrow); margin: 0 auto 34px; }
 .vslot--feature { border: 2px solid var(--accent); }
 
 /* Anchored from nurture emails (/thank-you#investment), so keep the card clear

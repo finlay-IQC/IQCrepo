@@ -58,6 +58,15 @@
         <p class="mini-sub">Watch the short video below, then use this page as your research hub. Every question you have about how we work, what results look like, and what happens if it doesn't fit — answered here before the call.</p>
       </div>
 
+      <!-- Urgency video - the first thing shown, directly under the subhead.
+           While its UID is empty the whole block is removed by the slot script
+           rather than left as a "coming soon" box, so a live visitor never sees
+           an empty frame at the top of the page. It appears as soon as a UID is
+           pasted in. -->
+      <div class="ty-urgency-lead" id="watch-first">
+        <div class="vslot vslot--feature" data-stream-uid="" data-title="Urgency video"></div>
+      </div>
+
       <!-- Confirm-call video (60-90s). Existing Cloudflare Stream asset - left as is. -->
       <div class="ty-video">
         <div class="cf-stream">
@@ -95,22 +104,6 @@
       </div>
     </div>
 
-    <!-- ===================== URGENCY VIDEO ===================== -->
-    <!-- The most important video on the page. Sits on its own, directly after the
-         confirmation strip, with a heavier frame so it reads as the priority watch. -->
-    <section class="section">
-      <div class="wrap">
-        <div class="ty-urgency" id="watch-first">
-          <div class="narrow center">
-            <p class="eyebrow">Watch this first</p>
-            <h2>If You Only Watch One Video On This Page, Make It This One.</h2>
-            <p class="lead">Two to three minutes on what actually determines whether this works — and why the firms who get the most out of the audit are the ones who come to it straight.</p>
-          </div>
-          <!-- VIDEO SLOT - fill data-stream-uid to go live. See the swap note at the bottom of this file. -->
-          <div class="vslot vslot--feature" data-stream-uid="" data-title="Urgency video"></div>
-        </div>
-      </div>
-    </section>
 
     <!-- ===================== SECTION 1 - BREAKOUT VIDEOS ===================== -->
     <section class="section section--alt">
@@ -272,6 +265,11 @@
       var title = slot.getAttribute("data-title") || "Video";
 
       if (!uid) {
+        /* The feature slot sits at the top of a live page, so an empty one hides
+           its whole block rather than showing a placeholder to a real visitor.
+           Every other empty slot still renders the placeholder. */
+        var feature = slot.closest(".ty-urgency-lead");
+        if (feature) { feature.style.display = "none"; return; }
         slot.classList.add("vslot--empty");
         slot.innerHTML = '<div class="vslot-ph"><span class="vslot-ph-mark">Video coming soon</span></div>';
         return;
