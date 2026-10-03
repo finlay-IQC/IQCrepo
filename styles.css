@@ -448,7 +448,10 @@ strong { color: var(--ink); font-weight: 700; }
    embedded players. */
 .vslot-play {
   border: 0; padding: 0; cursor: pointer;
-  background-color: #17150f; background-size: cover; background-position: center;
+  background-color: #17150f; background-position: center;
+  /* contain, not cover: the player letterboxes a video that is not 16:9, so a
+     cropped-to-fill thumbnail shows a tighter frame than the video itself. */
+  background-size: contain; background-repeat: no-repeat;
   display: flex; align-items: center; justify-content: center;
 }
 .vslot-play-icon {
