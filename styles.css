@@ -432,6 +432,76 @@ strong { color: var(--ink); font-weight: 700; }
 .ty-note .warn { color: var(--accent-dark); font-weight: 700; }
 .ty-note .help { color: var(--muted); font-size: .92rem; margin-top: 8px; }
 
+/* ---------- Video slots (thank-you research hub) ----------
+   One component for every video on the page. A slot holds a 16:9 box whatever
+   state it is in, so filling in a Stream UID never shifts the layout. */
+.vslot {
+  position: relative; padding-top: 56.25%;
+  background: #000; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--line-strong);
+}
+.vslot > * { position: absolute; inset: 0; width: 100%; height: 100%; }
+.vslot iframe { border: 0; }
+
+/* click-to-load facade: the Stream thumbnail plus a play button. The player
+   iframe is only created on click, so nine videos cost nine images, not nine
+   embedded players. */
+.vslot-play {
+  border: 0; padding: 0; cursor: pointer;
+  background-color: #17150f; background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center;
+}
+.vslot-play-icon {
+  width: 66px; height: 66px; border-radius: 50%;
+  background: var(--accent); position: relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,.35);
+  transition: transform .18s ease;
+}
+.vslot-play-icon::after {
+  content: ""; position: absolute; top: 50%; left: 54%;
+  transform: translate(-50%, -50%);
+  border-left: 19px solid #fff;
+  border-top: 12px solid transparent; border-bottom: 12px solid transparent;
+}
+.vslot-play:hover .vslot-play-icon { transform: scale(1.06); }
+.vslot-play:focus-visible { outline: 3px solid var(--accent-dark); outline-offset: 2px; }
+
+/* empty state - shown until a Stream UID is pasted into the slot */
+.vslot--empty { background: var(--surface-alt); border-style: dashed; }
+.vslot-ph { display: flex; align-items: center; justify-content: center; }
+.vslot-ph-mark {
+  font-family: var(--sans); font-size: .78rem; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--muted);
+}
+
+/* the urgency video - wider than the breakouts, heavier frame */
+.ty-urgency { max-width: 780px; margin: 0 auto; }
+.ty-urgency .narrow.center { margin-bottom: 28px; }
+.vslot--feature { border: 2px solid var(--accent); }
+
+/* breakout video grid */
+.vgrid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 34px 26px; margin-top: 38px;
+}
+.vcard-title {
+  font-family: var(--serif); font-weight: 700; font-size: 1.05rem;
+  color: var(--ink); line-height: 1.32; margin: 16px 0 5px;
+}
+.vcard-desc { margin: 0; color: var(--muted); font-size: .93rem; }
+@media (max-width: 760px) { .vgrid { grid-template-columns: 1fr; gap: 30px; } }
+
+/* what to prep for the call */
+.prep-list {
+  max-width: 640px; margin: 28px auto 0; padding: 0;
+  list-style: none; display: grid; gap: 15px;
+}
+.prep-list li { position: relative; padding-left: 30px; color: var(--ink-soft); }
+.prep-list li::before {
+  content: ""; position: absolute; left: 5px; top: .62em;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
+}
+
 /* legal pages */
 .legal { max-width: var(--maxw-narrow); margin: 0 auto; }
 .legal h2 { margin-top: 32px; }
