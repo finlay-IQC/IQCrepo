@@ -100,7 +100,7 @@
          confirmation strip, with a heavier frame so it reads as the priority watch. -->
     <section class="section">
       <div class="wrap">
-        <div class="ty-urgency">
+        <div class="ty-urgency" id="watch-first">
           <div class="narrow center">
             <p class="eyebrow">Watch this first</p>
             <h2>If You Only Watch One Video On This Page, Make It This One.</h2>
@@ -122,43 +122,43 @@
         </div>
 
         <div class="vgrid">
-          <article class="vcard">
+          <article class="vcard" id="lead-gen-companies">
             <div class="vslot" data-stream-uid="" data-title="How is this different from the lead gen companies that took my money and delivered nothing?"></div>
             <h3 class="vcard-title">How Is This Different From The Lead Gen Companies That Took My Money And Delivered Nothing?</h3>
             <p class="vcard-desc">What those companies actually sell, why it fails for firms at your size, and where this works differently.</p>
           </article>
 
-          <article class="vcard">
+          <article class="vcard" id="real-numbers">
             <div class="vslot" data-stream-uid="" data-title="What results actually look like - the real numbers"></div>
             <h3 class="vcard-title">What Results Actually Look Like — The Real Numbers</h3>
             <p class="vcard-desc">Real client figures, the timeframes they happened in, and what was behind them.</p>
           </article>
 
-          <article class="vcard">
+          <article class="vcard" id="not-a-fit">
             <div class="vslot" data-stream-uid="" data-title="What happens if we are not the right fit?"></div>
             <h3 class="vcard-title">What Happens If We're Not The Right Fit?</h3>
             <p class="vcard-desc">Who this doesn't work for, how quickly we say so, and what happens when that's the answer.</p>
           </article>
 
-          <article class="vcard">
+          <article class="vcard" id="what-we-do">
             <div class="vslot" data-stream-uid="" data-title="What exactly do you do? The 60-second version"></div>
             <h3 class="vcard-title">What Exactly Do You Do? The 60-Second Version</h3>
             <p class="vcard-desc">The whole thing start to finish, with nothing dressed up.</p>
           </article>
 
-          <article class="vcard">
+          <article class="vcard" id="investment">
             <div class="vslot" data-stream-uid="" data-title="What is the investment?"></div>
             <h3 class="vcard-title">What's The Investment?</h3>
             <p class="vcard-desc">How the investment is structured, and what it depends on.</p>
           </article>
 
-          <article class="vcard">
+          <article class="vcard" id="your-input">
             <div class="vslot" data-stream-uid="" data-title="What do I need to do on my end?"></div>
             <h3 class="vcard-title">What Do I Need To Do On My End?</h3>
             <p class="vcard-desc">Your time, your input, and what we need from you for any of it to work.</p>
           </article>
 
-          <article class="vcard">
+          <article class="vcard" id="the-call">
             <div class="vslot" data-stream-uid="" data-title="What happens on the call?"></div>
             <h3 class="vcard-title">What Happens On The Call?</h3>
             <p class="vcard-desc">What we'll ask, what you'll walk away with, and what follows it.</p>
@@ -297,6 +297,15 @@
       slot.innerHTML = "";
       slot.appendChild(btn);
     });
+
+    /* Arriving from a nurture email link such as /thank-you#investment: scroll to
+       that card. The player still needs a click — browsers block autoplay with
+       sound, and a video that starts itself on arrival is worse than one that
+       waits. */
+    if (window.location.hash.length > 1) {
+      var target = document.getElementById(window.location.hash.slice(1));
+      if (target) { target.scrollIntoView(); }
+    }
   })();
   </script>
 

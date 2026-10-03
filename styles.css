@@ -479,6 +479,10 @@ strong { color: var(--ink); font-weight: 700; }
 .ty-urgency .narrow.center { margin-bottom: 28px; }
 .vslot--feature { border: 2px solid var(--accent); }
 
+/* Anchored from nurture emails (/thank-you#investment), so keep the card clear
+   of the viewport edge when it is scrolled to. */
+.vcard[id], .ty-urgency[id] { scroll-margin-top: 28px; }
+
 /* breakout video grid */
 .vgrid {
   display: grid; grid-template-columns: repeat(2, 1fr);
