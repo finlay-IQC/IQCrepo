@@ -12,49 +12,16 @@
 
   <link rel="icon" type="image/png" href="https://assets.cdn.filesafe.space/aLrke2WmmUxrUUz00dEo/media/6a451d34f5487c9778fe2980.png" />
 
-  <!-- TRACKING HEAD CODES GO HERE: Meta Pixel, GA4, GTM Head, TikTok, LinkedIn, etc. -->
-
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1765814437922581');
-  fbq('track', 'PageView');
-  </script>
-  <!-- End Meta Pixel Code -->
-
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "xr47fnm1k6");
-  </script>
-
-  <!-- NO CONVERSION EVENT ON THIS PAGE. That is the whole point of it existing.
-       This page is linked from nurture emails and follow-ups, so it gets opened
-       repeatedly by the same person. /thank-you is the booked-call conversion
-       page and should stay reachable only once, at the moment of booking.
-       Fire nothing here beyond the base PageView above. -->
+  <!-- NO TRACKING ON THIS PAGE. Deliberate, and the reason the page exists.
+       No Meta Pixel, no Clarity, no Vercel Analytics, no funnel JS. This page is
+       linked from nurture emails and follow-ups, so the same person opens it
+       repeatedly; counting that was distorting the numbers on /thank-you.
+       Do not paste tracking snippets here. If a tag is ever genuinely needed,
+       add it to the other pages instead. -->
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="minimal">
-  <!-- TRACKING BODY CODES GO HERE: GTM Body, noscript tags, etc. -->
-
-  <!-- Meta Pixel Code (noscript fallback) -->
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1765814437922581&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code (noscript fallback) -->
-
   <main>
     <div class="wrap narrow">
       <div class="mini-head">
@@ -187,8 +154,6 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
-
   <!-- ===================== VIDEO SLOTS =====================
        TO PUT A VIDEO LIVE: upload it to Cloudflare Stream, copy its UID (the 32-character
        hex string in the Stream dashboard URL), and paste it into that slot's
@@ -255,8 +220,5 @@
   })();
   </script>
 
-  <!-- Vercel Web Analytics -->
-  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
